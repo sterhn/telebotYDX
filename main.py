@@ -19,30 +19,28 @@ def get_char(message):
     bot.send_message(message.chat.id, text='Какое?', reply_markup=markup)
 
 
-@bot.message_handler(commands=['help'])
-def help_list(message):
-    bot.send_message(message.chat.id,
-                     '<i> You can type time of the day, say hello, ask me about my friend, my troubles, what I think about us and just type chat to talk \nWe can talk about Ascension too, if you want </>',
-                     parse_mode='html')
+@bot.message_handler(commands=['hobby'])
+def hobby(message):
+    bot.send_message(message.chat.id, text='Мне очень нравится вязать. Обычно я вижу разные маленькие игрушки. Их '
+                                           'иногда называют амигуруми. Мне нравится вязать потому что я могу это '
+                                           'делать одновременно с просмотром любимых сериалов')
 
 
-@bot.message_handler(commands=['lang'])
-def set_lang(message):
-    keyboard = types.InlineKeyboardMarkup()
-    key_jp = types.InlineKeyboardButton(text='🇯🇵 japanese', callback_data='jp')
-    keyboard.add(key_jp)
-    key_en = types.InlineKeyboardButton(text='🇬🇧 english', callback_data='en')
-    keyboard.add(key_en)
-    bot.send_message(message.chat.id, text='💬 please choose language', reply_markup=keyboard)
+@bot.message_handler(commands=['source'])
+def source(message):
+    bot.send_message(message.chat.id, text='https://github.com/sterhn/telebotYDX')
 
 
-# -------------------BOT CHATTING----------------
-# @bot.message_handler(content_types=['text'])
-# def get_text_messages(message):
-#     # getting phrases from voice data
-#     if message.text:
-#         bot.send_message(message.chat.id, '<i>' + msg + '</>', parse_mode='html')
-#         bot.send_audio(message.chat.id, audio=(result[1]))
+@bot.message_handler(commands=['voice'])
+def voice(message):
+    markup = types.InlineKeyboardMarkup()
+    key_love = types.InlineKeyboardButton(text='о любви', callback_data='love')
+    key_chat = types.InlineKeyboardButton(text='о ChatGPT', callback_data='chatgpt')
+    key_sql = types.InlineKeyboardButton(text='SQL и NoSQL', callback_data='sql')
+    markup.add(key_love)
+    markup.add(key_chat)
+    markup.add(key_sql)
+    bot.send_message(message.chat.id, text='О чём ты хочешь послушать?', reply_markup=markup)
 
 
 @bot.callback_query_handler(func=lambda call: True)
@@ -55,6 +53,12 @@ def callback_worker(call):
         bot.send_message(call.message.chat.id, 'Вот моё новое селфи')
         bot.send_photo(call.message.chat.id,
                        'https://www.learningliftoff.com/wp-content/uploads/2015/04/Gaming-cat-computer-cats.jpg')
+    elif call.data == 'chatgpt':
+        bot.send_message(call.message.chat.id, 'Вот что такое ChatGPT')
+    elif call.data == 'love':
+        bot.send_message(call.message.chat.id, 'Вот история моей первой любви')
+    elif call.data == 'sql':
+        bot.send_message(call.message.chat.id, 'Вот разница между SQL и NoSQL')
 
 
 if __name__ == '__main__':
