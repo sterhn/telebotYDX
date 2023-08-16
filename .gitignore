@@ -72,3 +72,10 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 !/.env
+/.env
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/telebotYDX.iml
+/.idea/vcs.xml
