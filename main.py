@@ -63,7 +63,7 @@ def callback_worker(call):
         bot.send_message(call.message.chat.id, 'https://www.youtube.com/watch?v=HEXWRTEbj1I')
     elif call.data == 'sql':
         bot.send_message(call.message.chat.id, 'Вот разница между SQL и NoSQL')
-        bot.send_voice(call.message.chat.id, 'AwACAgIAAxkBAAMyZN3E - o0jNAYXHcDfLgut6UFTtecAAuowAAKjCeBKUDEmVoq69qgwBA')
+        bot.send_voice(call.message.chat.id, 'AwACAgIAAxkBAAMyZN3E-o0jNAYXHcDfLgut6UFTtecAAuowAAKjCeBKUDEmVoq69qgwBA')
 
 
 if __name__ == '__main__':
