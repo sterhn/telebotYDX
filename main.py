@@ -43,6 +43,7 @@ def voice(message):
     bot.send_message(message.chat.id, text='О чём ты хочешь послушать?', reply_markup=markup)
 
 
+# ----------BUTTONS---------------------------------
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
     if call.data == 'old':
@@ -55,10 +56,14 @@ def callback_worker(call):
                        'https://www.learningliftoff.com/wp-content/uploads/2015/04/Gaming-cat-computer-cats.jpg')
     elif call.data == 'chatgpt':
         bot.send_message(call.message.chat.id, 'Вот что такое ChatGPT')
+        bot.send_voice(call.message.chat.id, 'AwACAgIAAxkBAAMsZN3EmbDf20KdydeuRzpf9c9bmIcAAuYwAAKjCeBKpcsruOl5g4owBA')
+
     elif call.data == 'love':
-        bot.send_message(call.message.chat.id, 'Вот история моей первой любви')
+        bot.send_message(call.message.chat.id, 'Предлагаю послушать песню о любви')
+        bot.send_message(call.message.chat.id, 'https://www.youtube.com/watch?v=HEXWRTEbj1I')
     elif call.data == 'sql':
         bot.send_message(call.message.chat.id, 'Вот разница между SQL и NoSQL')
+        bot.send_voice(call.message.chat.id, 'AwACAgIAAxkBAAMyZN3E - o0jNAYXHcDfLgut6UFTtecAAuowAAKjCeBKUDEmVoq69qgwBA')
 
 
 if __name__ == '__main__':
